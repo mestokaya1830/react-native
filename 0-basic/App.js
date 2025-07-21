@@ -1,22 +1,39 @@
-import React from 'react';
+import React, {useState } from 'react';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { StatusBar, ScrollView, Text, View, StyleSheet, Image, ImageBackground, Button } from 'react-native';
+import { StatusBar, ScrollView, Text, View, StyleSheet, Image, ImageBackground, Button, Pressable, Modal } from 'react-native';
 
 import img1 from './assets/img1.png'
 import imgBG from './assets/bg.jpg'
 
 export default function App() {
+  const [isModel, setModel] = useState(false);
+
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
           <StatusBar barStyle="dark-content" backgroundColor="red" />
           <View style={{flex: 1}}>
               <ImageBackground source={imgBG} style={styles.bgImg}>
-                <ScrollView >
+                <ScrollView>
                   <Text style={styles.text}>Merhaba Expo!</Text>
                   <Image source={img1} style={styles.img} />
                   <View style={styles.btn}>
-                    <Button title='LogIn' onPress={() => console.log('Button pressed!')} />
+                    <Button title="LogIn" onPress={() => console.log('Button pressed!')} />
+                      <Pressable onPress={() => console.log('Pressed')} style={styles.pressAble}>
+                        <Text>Pressable Image</Text>
+                        <Image source={img1} style={styles.img} />
+                      </Pressable>
+                      <Button title="Open Model" onPress={() => setModel(true)} />
+                      <Modal 
+                          animationType="slide"
+                          transparent={true} 
+                          visible={isModel} 
+                          onRequestClose={() => setModel(false)}>
+                        <View style={{flex: 1, backgroundColor: "red", padding:60}}>
+                          <Text>Model COntent</Text>
+                          <Button title='Close Model' onPress={() => setModel(false)} />
+                        </View>
+                      </Modal>
                   </View>
                 </ScrollView>
               </ImageBackground>
@@ -42,6 +59,9 @@ const styles = StyleSheet.create({
     height:200
   },
   btn:{
+    marginTop:30
+  },
+  pressAble:{
     marginTop:30
   }
 });
