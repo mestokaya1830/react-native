@@ -60,7 +60,17 @@ export default function App() {
                   </View>
                 </Modal>
                 <View style={{ marginTop: 30 }}>
-                  <Button title="Alert" onPress={() => Alert.alert("Hello")} />
+                  <Button title="Alert" onPress={() => Alert.alert("Invalid Data","Incorrect", [
+                    {
+                      text: "Cancel",
+                      onPress: () => console.log("Cancel Pressed"),
+                      style: "cancel",
+                    },
+                    {
+                      text: "OK",
+                      onPress: () => console.log("OK Pressed"),
+                    },
+                  ])} />
                 </View>
               </View>
             </ScrollView>
