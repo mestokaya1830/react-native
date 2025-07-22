@@ -1,9 +1,22 @@
-import React, {useState } from 'react';
-import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
-import { StatusBar, ScrollView, Text, View, StyleSheet, Image, ImageBackground, Button, Pressable, Modal } from 'react-native';
+import React, { useState } from "react";
+import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
 
-import img1 from './assets/img1.png'
-import imgBG from './assets/bg.jpg'
+import {
+  StatusBar,
+  ScrollView,
+  Text,
+  View,
+  StyleSheet,
+  Image,
+  ImageBackground,
+  Button,
+  Pressable,
+  Modal,
+  ActivityIndicator,
+  Alert,
+} from "react-native";
+import img1 from "./assets/img1.png";
+import imgBG from "./assets/bg.jpg";
 
 export default function App() {
   const [isModel, setModel] = useState(false);
@@ -11,57 +24,72 @@ export default function App() {
   return (
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
-          <StatusBar barStyle="dark-content" backgroundColor="red" />
-          <View style={{flex: 1}}>
-              <ImageBackground source={imgBG} style={styles.bgImg}>
-                <ScrollView>
-                  <Text style={styles.text}>Merhaba Expo!</Text>
+        <StatusBar barStyle="dark-content" backgroundColor="red" />
+        <View style={{ flex: 1 }}>
+          <ImageBackground source={imgBG} style={styles.bgImg}>
+            <ActivityIndicator size="large" color="#0000ff" />
+            <ScrollView>
+              <Text style={styles.text}>Merhaba Expo!</Text>
+              <Image source={img1} style={styles.img} />
+              <View style={styles.btn}>
+                <Button
+                  title="LogIn"
+                  onPress={() => console.log("Button pressed!")}
+                />
+                <Pressable
+                  onPress={() => console.log("Pressed")}
+                  style={styles.pressAble}
+                >
+                  <Text>Pressable Image</Text>
                   <Image source={img1} style={styles.img} />
-                  <View style={styles.btn}>
-                    <Button title="LogIn" onPress={() => console.log('Button pressed!')} />
-                      <Pressable onPress={() => console.log('Pressed')} style={styles.pressAble}>
-                        <Text>Pressable Image</Text>
-                        <Image source={img1} style={styles.img} />
-                      </Pressable>
-                      <Button title="Open Model" onPress={() => setModel(true)} />
-                      <Modal 
-                          animationType="slide"
-                          transparent={true} 
-                          visible={isModel} 
-                          onRequestClose={() => setModel(false)}>
-                        <View style={{flex: 1, backgroundColor: "red", padding:60}}>
-                          <Text>Model COntent</Text>
-                          <Button title='Close Model' onPress={() => setModel(false)} />
-                        </View>
-                      </Modal>
+                </Pressable>
+                <Button title="Open Model" onPress={() => setModel(true)} />
+                <Modal
+                  animationType="slide"
+                  visible={isModel}
+                  onRequestClose={() => setModel(false)}
+                >
+                  <View
+                    style={{ flex: 1, backgroundColor: "red", padding: 60 }}
+                  >
+                    <Text>Model COntent</Text>
+                    <Button
+                      title="Close Model"
+                      onPress={() => setModel(false)}
+                    />
                   </View>
-                </ScrollView>
-              </ImageBackground>
-          </View>
+                </Modal>
+                <View style={{ marginTop: 30 }}>
+                  <Button title="Alert" onPress={() => Alert.alert("Hello")} />
+                </View>
+              </View>
+            </ScrollView>
+          </ImageBackground>
+        </View>
       </SafeAreaView>
     </SafeAreaProvider>
   );
 }
 
 const styles = StyleSheet.create({
-  bgImg:{
+  bgImg: {
     flex: 1,
-    alignItems:'center'
+    alignItems: "center",
   },
-  text:{
-    textAlign:'center',
-    fontSize:30,
+  text: {
+    textAlign: "center",
+    fontSize: 30,
     marginTop: 20,
     marginBottom: 20,
   },
-  img:{
+  img: {
     width: 300,
-    height:200
+    height: 200,
   },
-  btn:{
-    marginTop:30
+  btn: {
+    marginTop: 30,
   },
-  pressAble:{
-    marginTop:30
-  }
+  pressAble: {
+    marginTop: 30,
+  },
 });
