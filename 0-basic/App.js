@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { SafeAreaProvider, SafeAreaView } from "react-native-safe-area-context";
+import Message from "./components/message.js";
 
 import {
   StatusBar,
@@ -16,7 +17,7 @@ import {
   Alert,
 } from "react-native";
 import img1 from "./assets/img1.png";
-import imgBG from "./assets/bg.jpg";
+import bgImg from "./assets/bg.jpg";
 
 export default function App() {
   const [isModel, setModel] = useState(false);
@@ -25,10 +26,12 @@ export default function App() {
     <SafeAreaProvider>
       <SafeAreaView style={{ flex: 1 }}>
         <StatusBar barStyle="dark-content" backgroundColor="red" />
-        <View style={{ flex: 1 }}>
-          <ImageBackground source={imgBG} style={styles.bgImg}>
+        <View style={{ flex: 1}}>
+          <ImageBackground source={bgImg} style={styles.bgImg}>
             <ActivityIndicator size="large" color="#0000ff" />
-            <ScrollView>
+            <ScrollView contentContainerStyle={styles.scrollCentered}
+              showsVerticalScrollIndicator={false}
+              overScrollMode="never">
               <Text style={styles.text}>Merhaba Expo!</Text>
               <Image source={img1} style={styles.img} />
               <View style={styles.btn}>
@@ -50,7 +53,7 @@ export default function App() {
                   onRequestClose={() => setModel(false)}
                 >
                   <View
-                    style={{ flex: 1, backgroundColor: "red", padding: 60 }}
+                    style={{ flex: 1, backgroundColor: "red" }}
                   >
                     <Text>Model COntent</Text>
                     <Button
@@ -73,6 +76,8 @@ export default function App() {
                   ])} />
                 </View>
               </View>
+              <Message />
+              <Message />
             </ScrollView>
           </ImageBackground>
         </View>
@@ -82,9 +87,14 @@ export default function App() {
 }
 
 const styles = StyleSheet.create({
+  scrollCentered: {
+  flexGrow: 1,
+  justifyContent: "center",
+  alignItems: "center",
+  padding: 20,
+},
   bgImg: {
     flex: 1,
-    alignItems: "center",
   },
   text: {
     textAlign: "center",
