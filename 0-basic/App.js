@@ -78,6 +78,25 @@ export default function App() {
               </View>
               <Message />
               <Message />
+
+              <View style={styles.shadowBox}>
+                <Text style={styles.shadowText}>Shadow Box</Text>
+              </View>
+
+              <View style={styles.box}>
+                <View style={styles.textBox}><Text>Box1</Text></View>
+                <View style={styles.textBox}><Text>Box2</Text></View>
+                <View style={styles.textBox}><Text>Box3</Text></View>
+                <View style={styles.textBox}><Text>Box4</Text></View>
+                <View style={styles.textBox}><Text>Box5</Text></View>
+              </View>
+              <View style={styles.box2}>
+                <View style={styles.textBox2}><Text>Box1</Text></View>
+                <View style={styles.textBox2}><Text>Box2</Text></View>
+                <View style={styles.textBox2}><Text>Box3</Text></View>
+                <View style={styles.textBox2}><Text>Box4</Text></View>
+                <View style={styles.textBox2}><Text>Box5</Text></View>
+              </View>
             </ScrollView>
           </ImageBackground>
         </View>
@@ -111,5 +130,58 @@ const styles = StyleSheet.create({
   },
   pressAble: {
     marginTop: 30,
+  },
+  shadowBox: {
+    width: 300,
+    height: 120,
+    backgroundColor: "white",
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
+    elevation: 5,
+  },
+  shadowText: {
+    fontSize: 20,
+    color: "#000",
+    fontWeight: "bold",
+  },
+  box: {
+    flex: 1,
+    width: "100%",
+    flexDirection: "row",
+    backgroundColor: "lightblue",
+    marginTop: 20,
+  },
+  textBox: {
+    width: "20%",
+    height: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "black",
+  },
+  box2: {
+    flex: 1,
+    width: "100%",
+    backgroundColor: "red",
+    marginTop: 20,
+    padding: 10,
+  },
+  textBox2: {
+    width: "100%",
+    height: 50,
+    justifyContent: "center",
+    alignItems: "center",
+    borderWidth: 1,
+    borderColor: "black",
+    marginTop: 5,
+    backgroundColor: "white",
   },
 });
