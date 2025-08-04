@@ -8,7 +8,7 @@ import {
   Button,
   Alert,
   Image,
-  TouchableOpacity,
+  Pressable,
 } from "react-native";
 
 import img1 from "./assets/img1.jpg";
@@ -26,14 +26,14 @@ export default function App(){
         </Text>
       </View>
       <View>
-        <TouchableOpacity onPress={() => Alert.alert("Hello")}>
-          <Text style={{textAlign: "center"}}>TouchableOpacity</Text>
+        <Pressable onPress={() => Alert.alert("Hello")}>
+          <Text style={{textAlign: "center"}}>Pressable</Text>
           <Image
             source={img1}
             style={styles.img}
             onPress={() => Alert.alert("Hello")}
           />
-        </TouchableOpacity>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
