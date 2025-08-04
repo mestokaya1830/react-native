@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   StatusBar,
   Modal,
-  TouchableOpacity,
+  Pressable,
 } from "react-native";
 
 
@@ -16,12 +16,12 @@ export default function App() {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor={"green"} />
       <View style={styles.container}>
-        <TouchableOpacity
+        <Pressable
           style={styles.openBtn}
           onPress={() => setModalVisible(true)}
         >
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>Open Modal</Text>
-        </TouchableOpacity>
+        </Pressable>
           <Modal
             visible={modalVisible}
             animationType="slide"
@@ -29,7 +29,7 @@ export default function App() {
           >
             <View style={styles.modalContent}>
               <Text>Modal Content</Text>
-              <TouchableOpacity
+              <Pressable
                 style={styles.closeBtn}
                 onPress={() => setModalVisible(false)}
               >
@@ -38,7 +38,7 @@ export default function App() {
                 >
                   Close Modal
                 </Text>
-              </TouchableOpacity>
+              </Pressable>
             </View>
           </Modal>
       </View>
