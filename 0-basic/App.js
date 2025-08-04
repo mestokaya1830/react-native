@@ -4,7 +4,8 @@ import {
   Text,
   View,
   SafeAreaView,
-  StatusBar
+  StatusBar,
+  ActivityIndicator
 } from "react-native";
 
 
@@ -12,7 +13,8 @@ export default function App(){
   return (
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor={'green'} />
-        <View style={styles.container}>
+      <View style={styles.container}>
+        {/* <ActivityIndicator size="large" color="green" style={{flex: 1}} />   */}
           <Text style={styles.text}>Content</Text>
         </View>
     </SafeAreaView>
