@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -7,8 +7,8 @@ import {
   StatusBar,
   Modal,
   Pressable,
+  Alert,
 } from "react-native";
-
 
 export default function App() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -16,35 +16,48 @@ export default function App() {
     <SafeAreaView style={styles.safeArea}>
       <StatusBar barStyle="light-content" backgroundColor={"green"} />
       <View style={styles.container}>
-        <Pressable
-          style={styles.openBtn}
-          onPress={() => setModalVisible(true)}
-        >
+        <Pressable style={styles.openBtn} onPress={() => setModalVisible(true)}>
           <Text style={{ fontSize: 20, fontWeight: "bold" }}>Open Modal</Text>
         </Pressable>
-          <Modal
-            visible={modalVisible}
-            animationType="slide"
-            onRequestClose={() => setModalVisible(false)}
-          >
-            <View style={styles.modalContent}>
-              <Text>Modal Content</Text>
-              <Pressable
-                style={styles.closeBtn}
-                onPress={() => setModalVisible(false)}
+        <Modal
+          visible={modalVisible}
+          animationType="slide"
+          onRequestClose={() => setModalVisible(false)}
+        >
+          <View style={styles.modalContent}>
+            <Text>Modal Content</Text>
+            <Pressable
+              style={styles.closeBtn}
+              onPress={() => setModalVisible(false)}
+            >
+              <Text
+                style={{ color: "white", fontSize: 20, fontWeight: "bold" }}
               >
-                <Text
-                  style={{ color: "white", fontSize: 20, fontWeight: "bold" }}
-                >
-                  Close Modal
-                </Text>
-              </Pressable>
-            </View>
-          </Modal>
+                Close Modal
+              </Text>
+            </Pressable>
+          </View>
+        </Modal>
+
+        <Pressable
+          style={styles.openBtn}
+          onPress={() =>
+            Alert.alert("Alert Modal", "Invalided Data", [
+              {
+                text: "Cancel",
+                onPress: () => {return false;},
+                style: "cancel",
+              },
+              { text: "OK", onPress: () => Alert.alert('Bye') },
+            ])
+          }
+        >
+          <Text style={{ fontSize: 20, fontWeight: "bold" }}>AlertModal</Text>
+        </Pressable>
       </View>
     </SafeAreaView>
   );
-};
+}
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -56,7 +69,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     padding: 20,
   },
- 
+
   openBtn: {
     alignItems: "center",
     justifyContent: "center",
@@ -83,5 +96,5 @@ const styles = StyleSheet.create({
     backgroundColor: "rgba(133, 168, 233, 0.5)",
     padding: 20,
     alignItems: "center",
-  }
+  },
 });
