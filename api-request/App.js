@@ -42,6 +42,20 @@ export default function App() {
             );
           }}
           keyExtractor={(item) => item.id}
+          ListHeaderComponent={() => (
+            <View style={{ height: 50 }} />
+          )}
+          ListFooterComponent={() => (
+            <View style={{ height: 70 }} />
+          )}
+          ItemSeparatorComponent={() => <View style={{ height: 10 }} />}
+          ListEmptyComponent={() => (
+            <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
+              <Text style={{ fontSize: 24, fontWeight: "bold" }}>
+                No data found
+              </Text>
+            </View>
+          )}
         />
       </View>
     </SafeAreaView>
@@ -67,7 +81,6 @@ const styles = StyleSheet.create({
     height: "auto",
     width: "100%",
     padding: 10,
-    marginTop: 5,
     backgroundColor: "lightgray",
     borderRadius: 10,
   },
