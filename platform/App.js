@@ -14,7 +14,7 @@ import {
 export default function App(){
   return (
     <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor={'green'} />
+      <StatusBar barStyle="light-content" backgroundColor={'red'} />
       <View style={styles.container}>
         {/* <ActivityIndicator size="large" color="green" style={{flex: 1}} />   */}
         <Text style={styles.text}>Content</Text>
