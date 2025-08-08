@@ -7,26 +7,37 @@ import {
   StatusBar,
   ActivityIndicator,
   FlatList,
+  RefreshControl,
 } from "react-native";
 
 export default function App() {
   const [users, setUsers] = useState(null);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch(
-          "https://jsonplaceholder.typicode.com/todos"
-        );
-        const data = await response.json();
-        setUsers(data);
-        setLoading(false);
-      } catch (error) {
-        console.error(error);
-      }
-    };
+  const [refreshing, setRefreshing] = useState(false);
+
+
+
+  const fetchUsers = async () => {
+    try {
+      const response = await fetch("http://192.168.31.182:4000/users");
+      const data = await response.json();
+      console.log(data);
+      setUsers(data);
+      setLoading(false);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+  const handleRefresh = () => {
+    setRefreshing(true);
     fetchUsers();
-  });
+    setRefreshing(false);
+  };
+  useEffect(() => {
+    fetchUsers();
+  }, []);
+
+  
   if (loading) {
     return (
       <SafeAreaView style={styles.safeArea}>
@@ -47,13 +58,13 @@ export default function App() {
           data={users}
           renderItem={({ item }) => {
             return (
-              <View key={item.id} style={styles.list}>
-                <Text style={styles.textId}>{item.id}</Text>
-                <Text style={styles.textTitle}>{item.title}</Text>
+              <View key={item._id} style={styles.list}>
+                <Text style={styles.textId}>{item._id}</Text>
+                <Text style={styles.textTitle}>{item.name}</Text>
               </View>
             );
           }}
-          keyExtractor={(item) => item.id}
+          keyExtractor={(item) => item._id}
           ListHeaderComponent={() => (
             <View style={{ height: 50 }} />
           )}
@@ -68,6 +79,12 @@ export default function App() {
               </Text>
             </View>
           )}
+          refreshControl={
+            <RefreshControl
+              refreshing={refreshing}
+              onRefresh={handleRefresh}
+            />
+          }
         />
       </View>
     </SafeAreaView>

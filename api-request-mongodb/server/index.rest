@@ -1,0 +1,14 @@
+###
+GET http://localhost:4000/users
+
+###
+POST http://localhost:4000/adduser
+Content-Type: application/json
+
+{
+  "name": "Ilos Kaya",
+  "password": "9090" 
+}
+
+###
+POST http://localhost:4000/deleteuser/68962265e33659061c61c186
