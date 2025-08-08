@@ -22,18 +22,19 @@ app.post("/adduser", async (req, res) => {
     }
     const newUser = new Users(req.body);
     await newUser.save();
-    res.status(201).json(newUser);
+    res.status(201).json({ success: true, message: "User added successfully" });
   } catch (error) {
     res.status(500).json({ error });
   }
 });
-app.post("/deleteuser/:id", async (req, res) => {
-  console.log(req.params.id);
+app.post("/deleteuser", async (req, res) => {
+  const id = req.body.id;
+  console.log("Deleting user with ID:", id);
   try {
-    if (!req.params.id) {
+    if (!id) {
       return res.status(400).json({ message: "User ID is required" });
     }
-    const deletedUser = await Users.deleteOne({ _id: req.params.id });
+    const deletedUser = await Users.deleteOne({ _id: id });
     if (!deletedUser) {
       return res.status(404).json({ message: "User not found" });
     }
