@@ -1,37 +1,88 @@
+import { createMaterialTopTabNavigator } from "@react-navigation/material-top-tabs";
+import { NavigationContainer, useNavigation } from "@react-navigation/native";
 import React from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  SafeAreaView,
-  StatusBar,
-  ActivityIndicator
-} from "react-native";
+import { MaterialIcons } from "@expo/vector-icons";
 
+const Tab = createMaterialTopTabNavigator();
 
-export default function App(){
+import Home from "./pages/Home";
+import Profile from "./pages/Profile";
+import Settings from "./pages/Settings";
+import About from "./pages/About";
+
+export default function App() {
   return (
-    <SafeAreaView style={styles.safeArea}>
-      <StatusBar barStyle="light-content" backgroundColor={'green'} />
-      <View style={styles.container}>
-        {/* <ActivityIndicator size="large" color="green" style={{flex: 1}} />   */}
-          <Text style={styles.text}>Content</Text>
-        </View>
-    </SafeAreaView>
+    <NavigationContainer>
+      <Tab.Navigator>
+        <Tab.Screen
+          name="Home"
+          component={Home}
+          options={{
+            title: "Home",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="home" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Profile"
+          component={Profile}
+          options={{
+            title: "Profile",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="person" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            title: "Settings",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="settings" color={color} size={size} />
+            ),
+          }}
+        />
+        <Tab.Screen
+          name="About"
+          component={About}
+          options={{
+            title: "About",
+            headerStyle: {
+              backgroundColor: "#f4511e",
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            tabBarIcon: ({ color, size }) => (
+              <MaterialIcons name="info" color={color} size={size} />
+            ),
+          }}
+        />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
-};
-
-const styles = StyleSheet.create({
-  safeArea: {
-    flex: 1,
-  },
-  container: {
-    flex: 1,
-    alignItems: "center",
-  },
-  text: {
-    fontSize: 24,
-    fontWeight: "bold",
-    marginTop: 30,
-  }
-});
+}
