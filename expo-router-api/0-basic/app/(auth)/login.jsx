@@ -2,7 +2,7 @@ import { Text, View, StyleSheet } from "react-native";
 import { Link } from "expo-router";
 
 
-export default function Index() {
+export default function Login() {
   return (
     <View
       style={{
@@ -11,11 +11,8 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text style={styles.text}>Home Content</Text>
-      <Link href="/settings" style={styles.links}>Settings</Link>
-      <Link href="/users" style={styles.links}>Users</Link>
-      <Link href="/login" style={styles.links}>Login</Link>
-      <Link href="/register" style={styles.links}>Register</Link>
+      <Text style={styles.text}>Login Content</Text>
+      <Link href="/" style={styles.links}>Home</Link>
     </View>
   );
 }
