@@ -1,0 +1,2 @@
+npx create-expo-app
+npm run reset-project // remove examples
