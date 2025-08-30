@@ -3,7 +3,6 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   StatusBar,
   ActivityIndicator,
   FlatList,
@@ -13,6 +12,7 @@ import {
   Platform,
   Pressable,
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function App() {
   const [users, getUsers] = useState(null);

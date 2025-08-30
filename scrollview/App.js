@@ -3,11 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   StatusBar,
   ScrollView,
   Image
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import img1 from "./assets/1.png";
 import img2 from "./assets/2.png";

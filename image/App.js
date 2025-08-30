@@ -5,9 +5,10 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   StatusBar
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
+
 import bgImg from "./assets/bgImg.jpg";
 import img1 from "./assets/img1.png";
 

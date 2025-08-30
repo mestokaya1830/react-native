@@ -3,11 +3,11 @@ import {
   StyleSheet,
   Text,
   View,
-  SafeAreaView,
   StatusBar,
   ActivityIndicator,
   useWindowDimensions
 } from "react-native";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 import ResponseWindow from "./components/ResponseWindow";
 
