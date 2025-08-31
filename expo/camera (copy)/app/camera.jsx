@@ -1,11 +1,12 @@
-import { useState } from "react";
+import { useState, use } from "react";
 import { View, Text, Pressable, StyleSheet } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
-import { MaterialIcons } from "@expo/vector-icons";
 
 export default function Camera() {
   const [facing, setFacing] = useState("back");
-  const [permission, requestPermission] = useCameraPermissions();
+  const [permission, requestPermissionAsync] = useCameraPermissions();
+
+useE
 
   if (!permission) {
     return <View />;
@@ -30,11 +31,8 @@ export default function Camera() {
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing}>
         <View style={styles.buttonContainer}>
-          <Pressable style={styles.button}>
-            <Text style={styles.text}>Take Picture</Text>
-          </Pressable>
-          <Pressable onPress={() => toggleCameraFacing()}>
-            <MaterialIcons name="flip-camera-ios" size={36} color="white" />
+          <Pressable style={styles.button} onPress={toggleCameraFacing}>
+            <Text style={styles.text}>Kamerayı Çevir</Text>
           </Pressable>
         </View>
       </CameraView>

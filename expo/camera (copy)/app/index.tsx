@@ -10,7 +10,7 @@ export default function Index() {
       }}
     >
       <Text style={styles.text}>
-        <Link href="/camera">Camera</Link>
+        <Link href="/camera">Kamera</Link>
       </Text>
     </View>
   );
