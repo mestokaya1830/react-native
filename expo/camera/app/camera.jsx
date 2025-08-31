@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { View, Text, TouchableOpacity, StyleSheet } from "react-native";
+import { View, Text, Pressable, StyleSheet } from "react-native";
 import { CameraView, useCameraPermissions } from "expo-camera";
 
 export default function Camera() {
@@ -16,9 +16,9 @@ export default function Camera() {
     return (
       <View style={styles.container}>
         <Text style={styles.message}>Kamera kullanımı için izin gerekli</Text>
-        <TouchableOpacity style={styles.button} onPress={requestPermission}>
+        <Pressable style={styles.button} onPress={requestPermission}>
           <Text style={styles.text}>İzin Ver</Text>
-        </TouchableOpacity>
+        </Pressable>
       </View>
     );
   }
@@ -31,9 +31,9 @@ export default function Camera() {
     <View style={styles.container}>
       <CameraView style={styles.camera} facing={facing}>
         <View style={styles.buttonContainer}>
-          <TouchableOpacity style={styles.button} onPress={toggleCameraFacing}>
+          <Pressable style={styles.button} onPress={toggleCameraFacing}>
             <Text style={styles.text}>Kamerayı Çevir</Text>
-          </TouchableOpacity>
+          </Pressable>
         </View>
       </CameraView>
     </View>
