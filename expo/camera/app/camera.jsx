@@ -7,17 +7,15 @@ export default function Camera() {
   const [permission, requestPermission] = useCameraPermissions();
 
   if (!permission) {
-    // Kamera yükleniyor
     return <View />;
   }
 
   if (!permission.granted) {
-    // Kamera izni gerekli
     return (
       <View style={styles.container}>
-        <Text style={styles.message}>Kamera kullanımı için izin gerekli</Text>
+        <Text style={styles.message}>Give us camera permissions</Text>
         <Pressable style={styles.button} onPress={requestPermission}>
-          <Text style={styles.text}>İzin Ver</Text>
+          <Text style={styles.text}>Allow</Text>
         </Pressable>
       </View>
     );
