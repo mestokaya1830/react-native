@@ -13,8 +13,7 @@ import { useNavigation } from "@react-navigation/native";
 export default function CameraScreen() {
   const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
-  const [mediaPermission, requestMediaPermission] =
-    MediaLibrary.usePermissions();
+  const [mediaPermission, requestMediaPermission] = MediaLibrary.usePermissions();
   const [photoUri, setPhotoUri] = useState(null);
   const cameraRef = useRef(null);
   const navigation = useNavigation();
@@ -151,7 +150,7 @@ const styles = StyleSheet.create({
   camera: { flex: 1 },
   overlay: {
     position: "absolute",
-    bottom: 40,
+    bottom: 80,
     width: "100%",
     flexDirection: "row",
     justifyContent: "space-around",
