@@ -18,7 +18,7 @@ export default function CameraScreen() {
   const cameraRef = useRef(null);
   const navigation = useNavigation();
 
-  // Kamera izni
+  // camera permission
   if (!permission) return <View />;
   if (!permission.granted) {
     return (
