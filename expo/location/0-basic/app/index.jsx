@@ -17,7 +17,7 @@ const useCurrentTime = () => {
   return time;
 };
 
-export default function LocationWatcher() {
+export default function Index() {
   const [address, setAddress] = useState(null);
   const [isWatching, setIsWatching] = useState(false);
   const [subscription, setSubscription] = useState(null);
