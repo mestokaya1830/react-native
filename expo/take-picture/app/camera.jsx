@@ -87,7 +87,7 @@ export default function Camera() {
     )
   }
   return (
-    <View style={{ flex: 1 }}>
+    <View>
       <CameraView ref={cameraRef} facing={facing} style={{ flex: 1 }} />
       <Pressable
         style={styles.takePicture}
