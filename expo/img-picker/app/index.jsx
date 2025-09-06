@@ -11,7 +11,7 @@ export default function Index() {
     let imageUrl = await ImagePicker.launchImageLibraryAsync({
       mediaTypes: ['images'],
       allowsEditing: true,
-      aspect: [4, 3],
+      aspect: [2, 4],
       quality: 1,
     });
     console.log(imageUrl);
@@ -25,17 +25,17 @@ export default function Index() {
     <SafeAreaView style={styles.container}>
       <View>
         <Text style={styles.title}>Expo Image Picker</Text>
-        <Pressable
-          style={ styles.button }
-          onPress={() =>pickImage()}>
-          <Text style={{ color: 'white' }}>Pick an image from camera roll</Text>
-        </Pressable>
-
         {image && (
           <View style={styles.imageContainer}>
             <Image source={{ uri: image }} style={styles.image} />
           </View>
         )}
+        <Pressable
+          style={ styles.button }
+          onPress={() =>pickImage()}>
+          <Text style={styles.buttonText}>Pick an image from Gallery</Text>
+        </Pressable>
+
     </View>
     </SafeAreaView>
   );
@@ -56,18 +56,25 @@ const styles = StyleSheet.create({
   button: {
     marginTop: 20,
     padding: 10,
-    backgroundColor: 'blue',
+    backgroundColor: 'lightgreen',
     borderRadius: 5,
     alignItems: 'center',
+  },
+  buttonText: {
+    fontSize: 18,
   },
   imageContainer: {
     marginTop: 20,
     alignItems: 'center',
     justifyContent: 'center',
+    borderWidth: 1, 
+    borderColor: '#ccc',
+    padding: 10,
+    borderRadius: 5,
   },
   image: {
     width: 300,
-    height: 200,
+    height: 500,
     resizeMode: 'contain',
   },
 });
