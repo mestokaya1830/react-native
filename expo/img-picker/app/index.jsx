@@ -1,11 +1,20 @@
 import {Image, Pressable, StyleSheet, Text, View } from "react-native";
 import * as ImagePicker from 'expo-image-picker';
 import { SafeAreaView } from "react-native-safe-area-context";
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import * as MediaLibrary from 'expo-media-library';
+import { captureRef } from 'react-native-view-shot';
 
 export default function Index() {
   const [image, setImage] = useState(null)
-
+  const [permission, requestPermission] = MediaLibrary.usePermissions();
+  const imageRef = useRef(null);
+  
+  useEffect(() => {
+    if (!permission) {
+      requestPermission();
+    }
+  })
   const pickImage = async () => {
     // No permissions request is necessary for launching the image library
     let imageUrl = await ImagePicker.launchImageLibraryAsync({
@@ -21,6 +30,18 @@ export default function Index() {
   };
 
 
+  const saveImage = async () => {
+    if (image) {
+      const uri = await captureRef(imageRef, {
+        format: 'png',
+        quality: 1,
+      });
+      if (uri) {
+        alert(`Image saved to ${uri}`);
+      }
+      await MediaLibrary.saveToLibraryAsync(uri);
+    }
+  }
   return (
     <SafeAreaView style={styles.container}>
       <View>
@@ -34,6 +55,11 @@ export default function Index() {
           style={ styles.button }
           onPress={() =>pickImage()}>
           <Text style={styles.buttonText}>Pick an image from Gallery</Text>
+        </Pressable>
+        <Pressable ref={imageRef}
+          style={ styles.button }
+          onPress={() =>saveImage()}>
+          <Text style={styles.buttonText}>Save Image to Gallery</Text>
         </Pressable>
 
     </View>
